@@ -1,4 +1,5 @@
 var Hapi = require('hapi');
+var spawn = require('child-process').spawn;
 var server;
 
 function init(host, port){
@@ -15,8 +16,9 @@ function init(host, port){
 
   server.route({
     method: 'GET',
-    path: '/restart/',
+    path: '/restart',
     handler: function(){
+      spawn('npm', ['run', 'start']);
       process.exit(1);
     }
   });
