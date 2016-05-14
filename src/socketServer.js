@@ -29,7 +29,7 @@ function init(host, port){
     clients.push(ws);
 
     ws.on('message', function incoming(message) {
-      console.log('received: %s', message, ws);
+      console.log('received: %s', message);
       broadcast(message, ws);
     });
   });
