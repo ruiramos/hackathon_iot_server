@@ -15,7 +15,7 @@ function init(host, port){
 
   server.route({
     method: 'GET',
-    path: '/restart/'
+    path: '/restart/',
     handler: function(){
       process.exit(1);
     }
