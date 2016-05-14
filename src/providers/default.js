@@ -1,16 +1,16 @@
 module.exports = {
   initSession(socket){
-    socket.send({
+    socket.sendObject({
       event: 'setText',
       text: 'Hi there!'
     });
 
-    setTimeout(() => socket.send({
+    setTimeout(() => socket.sendObject({
       event: 'setText',
       text: 'Nice to have you around'
     }),2000);
 
-    setTimeout(() => socket.send({
+    setTimeout(() => socket.sendObject({
       event: 'setText',
       text: 'Please feel free to stay around for longer'
     }),4000)
@@ -18,6 +18,9 @@ module.exports = {
   },
 
   killSession: function(socket){
-    socket.send({setText: '** Bye! **'});
+    socket.sendObject({
+      event: 'setText',
+      text:'** Bye! **'
+    });
   }
 }

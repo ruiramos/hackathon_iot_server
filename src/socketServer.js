@@ -27,6 +27,7 @@ function init(host, port){
   console.log('WS: Listening on port', port);
 
   wss.on('connection', function connection(ws) {
+    ws.sendObject = (obj) => ws.send(JSON.stringify(obj));
     clients.push(ws);
 
     ws.on('message', function incoming(message) {
