@@ -1,4 +1,4 @@
-const config = require('./server.conf.js');
+var config = require('./server.conf.js');
 
 var socketServer = require('./socketServer');
 socketServer.init(config.wsHost, config.wsPort);
