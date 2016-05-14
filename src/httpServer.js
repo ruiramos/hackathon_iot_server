@@ -13,6 +13,14 @@ function init(host, port){
     }
   });
 
+  server.route({
+    method: 'GET',
+    path: '/restart/'
+    handler: function(){
+      process.exit(1);
+    }
+  });
+
   server.start((err) => {
     if(err) throw err;
     console.log('HTTP server running at:', server.info.uri )
