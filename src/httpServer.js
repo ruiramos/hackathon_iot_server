@@ -1,5 +1,5 @@
 var Hapi = require('hapi');
-var spawn = require('child-process').spawn;
+var spawn = require('child_process').spawn;
 var server;
 
 function init(host, port){
