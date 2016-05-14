@@ -19,7 +19,7 @@ function init(host, port){
     path: '/restart',
     handler: function(){
       spawn('npm', ['run', 'start']);
-      process.exit(1);
+      process.exit(0);
     }
   });
 
