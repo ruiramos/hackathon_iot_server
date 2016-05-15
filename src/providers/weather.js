@@ -2,7 +2,7 @@ module.exports = {
   initSession(socket, server){
     socket._connected = true;
 
-    if(wss.clients.every(ws => ws._connected)){
+    if(wss.clients.every(server => ws._connected)){
       socket.sendObject({
         event: 'setText',
         text: 'all ready!'
