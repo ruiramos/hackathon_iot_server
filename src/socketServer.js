@@ -16,7 +16,7 @@ function broadcast(data, from){
 };
 
 function init(host, port){
-  var MessageProvider = require('./providers/weather');
+  var MessageProvider = require('./providers/default');
   var wss = new WebSocketServer({
     host: host,
     port: port

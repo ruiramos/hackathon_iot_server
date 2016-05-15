@@ -3,10 +3,16 @@ module.exports = {
     socket._connected = true;
 
     if(server.clients.every(ws => ws._connected)){
+      var otherSocket = server.clients.filter(ws => ws !== socket)[0] || socket;
+      var ip = otherSocket._socket.remoteAddress;
+
+      // use sensors maybe???
+
       socket.sendObject({
         event: 'setText',
-        text: 'all ready!'
-      })
+        text: 'Location - 18o clear sunny'
+      });
+
     }
   },
 
