@@ -1,6 +1,3 @@
-
-var ready = [];
-
 module.exports = {
   initSession(socket, server){
     socket._connected = true;
@@ -22,4 +19,4 @@ module.exports = {
   }
 }
 
-ws._socket.remoteAddress
+// ws._socket.remoteAddress
