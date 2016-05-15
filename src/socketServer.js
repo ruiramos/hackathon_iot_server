@@ -16,7 +16,7 @@ function broadcast(data, from){
 };
 
 function init(host, port){
-  var MessageProvider = require('./providers/default');
+  var MessageProvider = require('./providers/qa');
   var wss = new WebSocketServer({
     host: host,
     port: port
@@ -27,7 +27,7 @@ function init(host, port){
   console.log('WS: Listening on port', port);
 
   wss.on('connection', function connection(ws) {
-    ws.sendObject = (obj) => ws.send(JSON.stringify(obj));
+    ws.sendMessage = obj => ws.send(JSON.stringify({event: 'setText', text: obj}));
     clients.push(ws);
 
     ws.on('message', function incoming(message) {
@@ -35,8 +35,10 @@ function init(host, port){
       var data = JSON.parse(message);
 
       if(data.event === 'server:connected'){
-        MessageProvider.initSession(ws, wss);
+        ws._connected = true;
+        MessageProvider.initSession(ws, wss, data);
       } else if(data.event === 'server:disconnected'){
+        ws._connected = false;
         MessageProvider.killSession(ws, wss);
       } else {
         broadcast(message, ws);

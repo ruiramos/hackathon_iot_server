@@ -6,22 +6,26 @@ function init(host, port){
   server = new Hapi.Server();
   server.connection({port: port});
 
-  server.route({
-    method: 'GET',
-    path: '/',
-    handler: function(request, reply){
-      reply('Hello world');
-    }
-  });
-
-  server.route({
-    method: 'GET',
-    path: '/restart',
-    handler: function(){
-      spawn('npm', ['run', 'start']);
-      process.exit(0);
-    }
-  });
+  // server.register(require('inert'), () => {
+  //   server.route({
+  //     method: 'GET',
+  //     path: '/',
+  //     handler: function(request, reply){
+  //       reply.file('./index.html');
+  //     }
+  //   });
+  // })
+  server.register(require('inert'), () => {
+    server.route({
+      method: 'GET',
+      path: '/{param*}',
+      handler: {
+          directory: {
+              path: './'
+          }
+      }
+    });
+  })
 
   server.start((err) => {
     if(err) throw err;

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Link</title>
+<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700" rel="stylesheet" type="text/css">
+</head>
+<style>
+  body {
+  margin:0;
+  padding:0;
+  font-family: Helvetica, Arial, sans;
+  line-height: 1.5em;
+}
+
+  .title {
+    margin-left: 5%;
+    padding: 5px 0;
+/*    background: #D8FFFF;
+*/
+    color: #11464C;
+  }
+
+  h1 {
+    font-family: 'Dancing Script', cursive;
+    color: #11464C;
+    font-size: 6em;
+    text-shadow:2px 2px #67FBFB;
+    text-transform: italic;
+    font-weight: 700;
+    margin: 50px 0;
+  }
+
+  img.main {
+    width: 40%;
+    margin:0 5%;
+    display: block;
+
+    float: left;
+  }
+
+  .image-back {
+    border-top: 2px solid #dfdfdf;
+    padding: 20px 0;
+    background:#efefef;
+    overflow: auto;
+  }
+
+  .config {
+    width: 35%;
+    float: left;
+  }
+
+  select, input {
+    font-size: 16px;
+
+  }
+
+  button {
+    padding: 3px 16px;
+    font-size: 12px;
+    border: 0;
+    background: #00CFE6;
+    color: white;
+    margin: 4px 0;
+    border-radius: 2px;
+  }
+
+</style>
+<body>
+  <div class="title">
+    <h1>Link</h1>
+    <p>Link connects you to the people you care about.</p>
+  </div>
+
+  <div class="image-back">
+    <img src="./link.jpg" alt="" class="main">
+
+    <div class="config">
+      <h3>Settings</h3>
+      <p>Select the app that you'll want to use with your link:</p>
+        <select name="provider" id="provider">
+          <option value="">Questions and Answers</option>
+          <option value="">Inspirational Quote of the Day</option>
+          <option value="">Weather Connect</option>
+        </select>
+
+        <button>Save</button>
+        <p>You can obviously download more apps for your link in the Link App Store®!</p>
+    </div>
+  </div>
+
+
+
+  <script src="client.js"></script>
+
+</body>
+</html>
