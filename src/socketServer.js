@@ -16,7 +16,7 @@ function broadcast(data, from){
 };
 
 function init(host, port){
-  var MessageProvider = require('./providers/default');
+  var MessageProvider = require('./providers/weather');
   var wss = new WebSocketServer({
     host: host,
     port: port
@@ -35,9 +35,9 @@ function init(host, port){
       var data = JSON.parse(message);
 
       if(data.event === 'server:connected'){
-        MessageProvider.initSession(ws);
+        MessageProvider.initSession(ws, wss);
       } else if(data.event === 'server:disconnected'){
-        MessageProvider.killSession(ws);
+        MessageProvider.killSession(ws, wss);
       } else {
         broadcast(message, ws);
       }
